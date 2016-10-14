@@ -1,5 +1,6 @@
 /*
  * Copyright 2013 Gerhard Klostermeier
+ * Copyright 2016 Zhang Jingye
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -66,7 +67,7 @@ public class Common extends Application {
     /**
      * True if this is the donate version of MCT.
      */
-    public static final boolean IS_DONATE_VERSION = false;
+    public static final boolean IS_DONATE_VERSION = true;
     /**
      * The directory name of the root directory of this app
      * (on external storage).
@@ -95,11 +96,13 @@ public class Common extends Application {
     public static final String TMP_DIR = "tmp";
 
     /**
-     * This file contains some standard MIFARE keys.
+     * This file contains some standard MIFARE && ZXCARD keys.
      * <ul>
      * <li>0xFFFFFFFFFFFF - Un-formatted, factory fresh tags.</li>
      * <li>0xA0A1A2A3A4A5 - First sector of the tag (MIFARE MAD).</li>
      * <li>0xD3F7D3F7D3F7 - NDEF formatted tags.</li>
+     * <li>0x003003003003 - ZXCARD KeyA</li>
+     * <li>0x668770666644 - ZXCARD KeyB</li>
      * </ul>
      */
     public static final String STD_KEYS = "std.keys";
@@ -109,7 +112,7 @@ public class Common extends Application {
      * (and a short google search).
      * https://github.com/4ZM/slurp/blob/master/res/xml/mifare_default_keys.xml
      */
-    public static final String STD_KEYS_EXTENDED = "extended-std.keys";
+    //public static final String STD_KEYS_EXTENDED = "extended-std.keys";
 
     /**
      * Possible operations the on a MIFARE Classic Tag.

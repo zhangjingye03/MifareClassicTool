@@ -46,7 +46,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingRight="3dp"
-            android:text="@string/text_sector_range_all"
+            android:text="0 - 2"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="@color/blue" />
 
@@ -57,7 +57,8 @@
             android:layout_height="wrap_content"
             android:minHeight="34dip"
             android:onClick="onChangeSectorRange"
-            android:text="@string/action_change" />
+            android:text="@string/action_change"
+            android:visibility="invisible" />
 
     </LinearLayout>
 
@@ -68,35 +69,15 @@
         android:layout_below="@id/linearLayoutCreateKeyMap"
         android:paddingLeft="5dp"
         android:text="@string/text_choose_key_file"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-
-    <Button
-        android:id="@+id/buttonCreateKeyMapSelectAll"
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/textViewCreateKeyMapChooseKeyFile"
-        android:minHeight="34dip"
-        android:onClick="onSelectAll"
-        android:text="@string/action_select_all" />
-
-    <Button
-        android:id="@+id/buttonCreateKeyMapSelectNone"
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@id/buttonCreateKeyMapSelectAll"
-        android:layout_toRightOf="@id/buttonCreateKeyMapSelectAll"
-        android:minHeight="34dip"
-        android:onClick="onSelectNone"
-        android:text="@string/action_select_none" />
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textAlignment="center"
+        android:textStyle="normal|bold" />
 
     <ScrollView
         android:id="@+id/scrollViewCreateKeyMap"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/textViewCreateKeyMapProgess"
-        android:layout_below="@id/buttonCreateKeyMapSelectAll"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true" >
 

@@ -202,12 +202,14 @@ public class DumpEditor extends BasicActivity
      */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        // Not used.
+        return true;
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.dump_editor_functions, menu);
+        /*getMenuInflater().inflate(R.menu.dump_editor_functions, menu);
         // Enable/Disable write dump function depending on NFC availability.
         menu.findItem(R.id.menuDumpEditorWriteDump).setEnabled(
                 !Common.useAsEditorOnly());
-        return true;
+        return true;*/
     }
 
     /**
@@ -598,6 +600,8 @@ public class DumpEditor extends BasicActivity
                         public void onTextChanged(CharSequence s,
                                 int start, int before, int count) {}
                     });
+                    // Disable it prevent from editing.
+                    et.setEnabled(false);
                     mLayout.addView(et);
                     // Tag headers of real sectors (sectors containing
                     // data (EditText) and not errors ("*")).
@@ -626,6 +630,7 @@ public class DumpEditor extends BasicActivity
                     }
                     text = TextUtils.concat(text, blocks.get(j));
                     et.setText(text, BufferType.SPANNABLE);
+                    et.setEnabled(false);
                     blocks = new ArrayList<SpannableString>(4);
                 } else {
                     // Add data block.
@@ -634,6 +639,21 @@ public class DumpEditor extends BasicActivity
                 }
             }
         }
+
+
+        TextView tv = new TextView(this);
+        tv.setTextColor(
+                getResources().getColor(R.color.yellow));
+        String l6 = lines[6].substring(0,4);
+        String l7 = lines[7].substring(0,4);
+        int i6 = Integer.parseInt(l6), i7 = Integer.parseInt(l7);
+        float balance = 0;
+        if (i6 > i7) balance = Integer.parseInt(lines[6].substring(8,14)) / 100f;
+            else balance = Integer.parseInt(lines[7].substring(8,14)) / 100f;
+        tv.setText("余额: " + String.valueOf(balance));
+        tv.setTextSize(50);
+        mLayout.addView(tv);
+
         // Initialization of the editor is not a change.
         mDumpChanged = tmpDumpChanged;
     }

@@ -65,7 +65,8 @@
                     android:layout_weight="0.5"
                     android:drawableTop="@drawable/write_tag"
                     android:onClick="onShowWriteTag"
-                    android:text="@string/action_write_tag" />
+                    android:text="@string/action_write_tag"
+                    android:visibility="invisible" />
 
             </LinearLayout>
 
@@ -82,7 +83,8 @@
                     android:layout_weight="0.5"
                     android:drawableTop="@drawable/edit_dump"
                     android:onClick="onOpenTagDumpEditor"
-                    android:text="@string/action_edit_tag_dump" />
+                    android:text="@string/action_edit_tag_dump"
+                    android:visibility="invisible" />
 
                 <Button
                     android:id="@+id/buttonMainEditKeyDump"
@@ -92,7 +94,8 @@
                     android:layout_weight="0.5"
                     android:drawableTop="@drawable/edit_keys"
                     android:onClick="onOpenKeyEditor"
-                    android:text="@string/action_edit_key_dump" />
+                    android:text="@string/action_edit_key_dump"
+                    android:visibility="invisible" />
 
             </LinearLayout>
 
@@ -109,8 +112,9 @@
                     android:layout_weight="0.5"
                     android:drawableTop="@drawable/tools"
                     android:onClick="onShowTools"
-                    android:text="@string/action_tools" />
-                
+                    android:text="@string/action_tools"
+                    android:visibility="invisible" />
+
                 <Button
                     android:id="@+id/buttonMainHelp"
                     style="?android:attr/buttonStyleSmall"

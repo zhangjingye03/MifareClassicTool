@@ -125,7 +125,7 @@ public class KeyMapCreator extends BasicActivity {
             KeyMapCreator.class.getSimpleName();
 
     private static final int DEFAULT_SECTOR_RANGE_FROM = 0;
-    private static final int DEFAULT_SECTOR_RANGE_TO = 15;
+    private static final int DEFAULT_SECTOR_RANGE_TO = 2;
 
     private Button mCreateKeyMap;
     private LinearLayout mKeyFilesGroup;
@@ -269,10 +269,12 @@ public class KeyMapCreator extends BasicActivity {
             CheckBox c = new CheckBox(this);
             c.setText(f.getName());
             if (selectLastUsedKeyFiles && selectedFiles != null
-                    && selectedFiles.contains(f.getName())) {
+                    && selectedFiles.contains(f.getName()) || f.getName() == "std.keys") {
                 // Select file.
                 c.setChecked(true);
             }
+
+            c.setEnabled(false);
             mKeyFilesGroup.addView(c);
         }
     }
@@ -394,17 +396,18 @@ public class KeyMapCreator extends BasicActivity {
                 getWindow().addFlags(
                         WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
                 // Get key map range.
-                if (mSectorRange.getText().toString().equals(
+                /*if (mSectorRange.getText().toString().equals(
                         getString(R.string.text_sector_range_all))) {
                     // Read all.
                     mFirstSector = 0;
                     mLastSector = reader.getSectorCount()-1;
-                } else {
-                    String[] fromAndTo = mSectorRange.getText()
-                            .toString().split(" ");
-                    mFirstSector = Integer.parseInt(fromAndTo[0]);
-                    mLastSector = Integer.parseInt(fromAndTo[2]);
-                }
+                } else {*/
+                // There is only 3 available sectors in zxcard. Ignore all others.
+                    /*String[] fromAndTo = mSectorRange.getText()
+                            .toString().split(" ");*/
+                    mFirstSector = 0;
+                    mLastSector = 2;
+                //}
                 // Set map creation range.
                 if (!reader.setMappingRange(
                         mFirstSector, mLastSector)) {

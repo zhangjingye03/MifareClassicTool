@@ -784,9 +784,9 @@ public class MainMenu extends Activity {
     private void copyStdKeysFilesIfNecessary() {
         File std = new File(Environment.getExternalStoragePublicDirectory(
                 Common.HOME_DIR) + "/" + Common.KEYS_DIR, Common.STD_KEYS);
-        File extended = new File(Environment.getExternalStoragePublicDirectory(
+        /*File extended = new File(Environment.getExternalStoragePublicDirectory(
                 Common.HOME_DIR) + "/" + Common.KEYS_DIR,
-                Common.STD_KEYS_EXTENDED);
+                Common.STD_KEYS_EXTENDED);*/
         AssetManager assetManager = getAssets();
 
         if (!std.exists()) {
@@ -804,7 +804,7 @@ public class MainMenu extends Activity {
                           + "to external storage.");
               }
         }
-        if (!extended.exists()) {
+        /*if (!extended.exists()) {
             // Copy extended-std.keys.
             try {
                 InputStream in = assetManager.open(
@@ -818,6 +818,6 @@ public class MainMenu extends Activity {
                   Log.e(LOG_TAG, "Error while copying 'extended-std.keys' "
                           + "from assets to external storage.");
               }
-        }
+        }*/
     }
 }
