@@ -340,9 +340,10 @@ public class MainMenu extends Activity {
      */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.general_options, menu);
         return true;
+        // Inflate the menu; this adds items to the action bar if it is present.
+       /* getMenuInflater().inflate(R.menu.general_options, menu);
+        return true;*/
     }
 
     /**
@@ -352,7 +353,8 @@ public class MainMenu extends Activity {
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v,
                 ContextMenuInfo menuInfo) {
-        super.onCreateContextMenu(menu, v, menuInfo);
+        return;
+        /*super.onCreateContextMenu(menu, v, menuInfo);
         MenuInflater inflater = getMenuInflater();
         menu.setHeaderTitle(R.string.dialog_tools_menu_title);
         menu.setHeaderIcon(android.R.drawable.ic_menu_preferences);
@@ -363,7 +365,7 @@ public class MainMenu extends Activity {
                 !Common.useAsEditorOnly());
         // Enable/Disable diff tool depending on write permissions.
         menu.findItem(R.id.menuMainDiffTool).setEnabled(
-                Common.hasWritePermissionToExternalStorage(this));
+                Common.hasWritePermissionToExternalStorage(this));*/
     }
 
     /**

@@ -33,33 +33,7 @@
         android:focusable="true"
         android:focusableInTouchMode="true" />
 
-    <LinearLayout
-        android:id="@+id/linearLayoutDumpEditorCaption"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:orientation="vertical"
-        android:paddingLeft="5dp"
-        android:paddingRight="5dp"
-        android:paddingBottom="5dp" >
-
-        <TextView
-            android:id="@+id/textViewDumpEditorCaptionTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:clickable="true"
-            android:onClick="onUpdateColors"
-            android:text="@string/text_caption_title"
-            android:textAppearance="?android:attr/textAppearanceSmall" />
-
-        <TextView
-            android:id="@+id/textViewDumpEditorCaption"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall" />
-    </LinearLayout>
-
-        <ScrollView
+    <ScrollView
             android:id="@+id/scrollViewDumpEditor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
