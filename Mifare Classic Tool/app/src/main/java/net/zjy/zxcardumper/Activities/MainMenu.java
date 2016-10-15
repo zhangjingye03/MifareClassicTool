@@ -16,7 +16,7 @@
  */
 
 
-package de.syss.MifareClassicTool.Activities;
+package net.zjy.zxcardumper.Activities;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
@@ -44,7 +44,6 @@ import android.util.Log;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -59,8 +58,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-import de.syss.MifareClassicTool.Common;
-import de.syss.MifareClassicTool.R;
+import net.zjy.zxcardumper.Common;
+import net.zjy.zxcardumper.R;
 
 /**
  * Main App entry point showing the main menu.

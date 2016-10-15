@@ -16,7 +16,7 @@
  */
 
 
-package de.syss.MifareClassicTool.Activities;
+package net.zjy.zxcardumper.Activities;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -40,8 +40,8 @@ import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.Locale;
 
-import de.syss.MifareClassicTool.Common;
-import de.syss.MifareClassicTool.R;
+import net.zjy.zxcardumper.Common;
+import net.zjy.zxcardumper.R;
 
 /**
  * Show and edit key files.

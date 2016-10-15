@@ -16,11 +16,11 @@
  */
 
 
-package de.syss.MifareClassicTool.Activities;
+package net.zjy.zxcardumper.Activities;
 
 import android.app.Activity;
 import android.content.Intent;
-import de.syss.MifareClassicTool.Common;
+import net.zjy.zxcardumper.Common;
 
 /**
  * An Activity implementing the NFC foreground dispatch system overwriting

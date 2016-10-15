@@ -16,7 +16,7 @@
  */
 
 
-package de.syss.MifareClassicTool.Activities;
+package net.zjy.zxcardumper.Activities;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -28,9 +28,9 @@ import android.os.Environment;
 import android.os.Handler;
 import android.util.SparseArray;
 import android.widget.Toast;
-import de.syss.MifareClassicTool.Common;
-import de.syss.MifareClassicTool.MCReader;
-import de.syss.MifareClassicTool.R;
+import net.zjy.zxcardumper.Common;
+import net.zjy.zxcardumper.MCReader;
+import net.zjy.zxcardumper.R;
 
 /**
  * Create a key map with the {@link KeyMapCreator} and then

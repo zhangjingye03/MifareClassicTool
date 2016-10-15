@@ -24,7 +24,7 @@
                 android:id="@+id/relativeLayoutValueBlockTool"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                tools:context="de.syss.MifareClassicTool.Activities.BccTool" >
+                tools:context="net.zjy.zxcardumper.Activities.BccTool" >
 
     <!-- Dummy to prevent EditTexts from getting focus on Activity startup -->
     <LinearLayout

@@ -5,7 +5,7 @@ android {
     buildToolsVersion '24.0.3'
 
     defaultConfig {
-        applicationId "de.syss.MifareClassicTool"
+        applicationId "net.zjy.zxcardumper"
         minSdkVersion 10
         targetSdkVersion 23
         versionCode 39

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">执信中学饭卡读取工具</string>
+    <string name="app_name">执信饭卡</string>
     <string name="action_append">附加</string>
     <string name="ac_data_block_no_keyb_1"></string>
     <string name="action_auto_reconnect">高级: 在密钥映射时卡片丢失自动重连</string>
@@ -160,7 +160,7 @@
     <string name="info_is_not_vb">错误：不是值块。</string>
     <string name="info_key_map_error">错误：饭卡连接丢失</string>
     <string name="info_mapping_sector_out_of_range">映射范围错误：扇区超出范围。使用更大的饭卡。</string>
-    <string name="info_new_tag_found">发现新饭卡</string>
+    <string name="info_new_tag_found">发现饭卡</string>
     <string name="info_no_dumps">缺少转储。读取饭卡并保存转储。</string>
     <string name="info_no_external_storage">错误：外部存储器不可读/可写</string>
     <string name="info_no_int_to_encode">错误：没有整数来编码</string>

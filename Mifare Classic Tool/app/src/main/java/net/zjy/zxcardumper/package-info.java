@@ -1,4 +1,4 @@
 /**
  * Commonly used classes and helper functions.
  */
-package de.syss.MifareClassicTool;
+package net.zjy.zxcardumper;

@@ -16,7 +16,7 @@
  */
 
 
-package de.syss.MifareClassicTool.Activities;
+package net.zjy.zxcardumper.Activities;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -46,10 +46,10 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-import de.syss.MifareClassicTool.Common;
-import de.syss.MifareClassicTool.MCReader;
-import de.syss.MifareClassicTool.R;
-import de.syss.MifareClassicTool.Activities.Preferences.Preference;
+import net.zjy.zxcardumper.Common;
+import net.zjy.zxcardumper.MCReader;
+import net.zjy.zxcardumper.R;
+import net.zjy.zxcardumper.Activities.Preferences.Preference;
 
 /**
  * Configure key map process and create key map.

@@ -16,7 +16,7 @@
  */
 
 
-package de.syss.MifareClassicTool.Activities;
+package net.zjy.zxcardumper.Activities;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -54,9 +54,9 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import de.syss.MifareClassicTool.Common;
-import de.syss.MifareClassicTool.MCReader;
-import de.syss.MifareClassicTool.R;
+import net.zjy.zxcardumper.Common;
+import net.zjy.zxcardumper.MCReader;
+import net.zjy.zxcardumper.R;
 
 /**
  * Write data to tag. The user can choose to write
@@ -915,7 +915,7 @@ public class WriteTag extends BasicActivity {
      * SparseArray)}).
      * @see MCReader#isWritableOnPositions(HashMap, SparseArray)
      * @see Common#getOperationInfoForBlock(byte, byte,
-     * byte, de.syss.MifareClassicTool.Common.Operations, boolean, boolean)
+     * byte, net.zjy.zxcardumper.Common.Operations, boolean, boolean)
      * @see #writeDump(HashMap, SparseArray)
      */
     private void checkTag() {

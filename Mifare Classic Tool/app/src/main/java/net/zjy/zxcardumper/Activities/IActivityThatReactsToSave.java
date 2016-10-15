@@ -16,9 +16,9 @@
  */
 
 
-package de.syss.MifareClassicTool.Activities;
+package net.zjy.zxcardumper.Activities;
 
-import de.syss.MifareClassicTool.Common;
+import net.zjy.zxcardumper.Common;
 
 /**
  * Interface with callback functions for objects (most likely Activities) that

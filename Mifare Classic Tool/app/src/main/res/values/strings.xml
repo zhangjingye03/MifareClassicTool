@@ -22,13 +22,13 @@
 <resources>
 
     <!-- Common stuff -->
-    <string name="app_name">MIFARE Classic Tool</string>
+    <string name="app_name">ZXCARD</string>
     <string name="app_version">App Version</string>
 
     <!-- Activity titles -->
-    <string name="title_activity_main">MIFARE Classic Tool</string>
+    <string name="title_activity_main">ZXCARDumper</string>
     <string name="title_activity_read_tag">Read Tag</string>
-    <string name="title_activity_dump_editor">Dump Editor</string>
+    <string name="title_activity_dump_editor">Balance view</string>
     <string name="title_activity_access_conditions">Access Conditions</string>
     <string name="title_activity_write_tag">Write Tag</string>
     <string name="title_activity_create_key_map">Map Keys to Sectors</string>
@@ -47,7 +47,7 @@
     <string name="title_activity_bcc_tool">BCC Calculator</string>
 
     <!-- Texts (labels etc.) -->
-    <string name="text_choose_key_file">Choose some key file(s):</string>
+    <string name="text_choose_key_file">\nPlease put your zxcard to the NFC sensing area.\n(Normally it is under the main camera.)\n\nWait for the notification and click the read button below.</string>
     <string name="text_wait_read_tag">Reading tag&#8230;\n(Don\'t remove tag)</string>
     <string name="text_key_map_progress">Key Mapping Progress:</string>
     <string name="text_sector">Sector</string>
@@ -165,7 +165,7 @@
     <string name="action_tools">Tools</string>
     <string name="action_exit_app">Exit App</string>
     <string name="action_nfc">Goto NFC Settings</string>
-    <string name="action_create_key_map">Map Keys to Sectors</string>
+    <string name="action_create_key_map">Read ZXCARD</string>
     <string name="action_create_key_map_and_read">Start Mapping and
         Read Tag</string>
     <string name="action_help">Help and Info</string>

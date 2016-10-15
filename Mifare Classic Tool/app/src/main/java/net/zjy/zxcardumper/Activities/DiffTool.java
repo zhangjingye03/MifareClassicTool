@@ -16,7 +16,7 @@
  */
 
 
-package de.syss.MifareClassicTool.Activities;
+package net.zjy.zxcardumper.Activities;
 
 import java.io.File;
 
@@ -33,9 +33,9 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import de.syss.MifareClassicTool.Common;
-import de.syss.MifareClassicTool.MCDiffUtils;
-import de.syss.MifareClassicTool.R;
+import net.zjy.zxcardumper.Common;
+import net.zjy.zxcardumper.MCDiffUtils;
+import net.zjy.zxcardumper.R;
 
 /**
  * A tool to show the difference between two dumps.

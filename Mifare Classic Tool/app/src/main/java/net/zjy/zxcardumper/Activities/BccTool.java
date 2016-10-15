@@ -16,10 +16,10 @@
  */
 
 
-package de.syss.MifareClassicTool.Activities;
+package net.zjy.zxcardumper.Activities;
 
-import de.syss.MifareClassicTool.Common;
-import de.syss.MifareClassicTool.R;
+import net.zjy.zxcardumper.Common;
+import net.zjy.zxcardumper.R;
 
 import android.os.Bundle;
 import android.view.View;

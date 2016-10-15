@@ -16,7 +16,7 @@
  */
 
 
-package de.syss.MifareClassicTool.Activities;
+package net.zjy.zxcardumper.Activities;
 
 import java.io.UnsupportedEncodingException;
 
@@ -24,8 +24,8 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.widget.TextView;
-import de.syss.MifareClassicTool.Common;
-import de.syss.MifareClassicTool.R;
+import net.zjy.zxcardumper.Common;
+import net.zjy.zxcardumper.R;
 
 /**
  * Display a (hex) dump as 7-Bit US-ASCII.

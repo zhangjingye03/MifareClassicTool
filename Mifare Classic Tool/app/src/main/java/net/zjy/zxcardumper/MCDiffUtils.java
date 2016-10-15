@@ -16,7 +16,7 @@
  */
 
 
-package de.syss.MifareClassicTool;
+package net.zjy.zxcardumper;
 
 import java.util.ArrayList;
 

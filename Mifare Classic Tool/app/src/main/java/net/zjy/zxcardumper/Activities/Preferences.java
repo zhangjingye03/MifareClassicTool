@@ -16,7 +16,7 @@
  */
 
 
-package de.syss.MifareClassicTool.Activities;
+package net.zjy.zxcardumper.Activities;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -27,8 +27,8 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import de.syss.MifareClassicTool.Common;
-import de.syss.MifareClassicTool.R;
+import net.zjy.zxcardumper.Common;
+import net.zjy.zxcardumper.R;
 
 /**
  * This view will let the user edit global preferences.

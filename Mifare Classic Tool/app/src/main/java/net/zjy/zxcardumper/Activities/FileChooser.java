@@ -16,7 +16,7 @@
  */
 
 
-package de.syss.MifareClassicTool.Activities;
+package net.zjy.zxcardumper.Activities;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -39,8 +39,8 @@ import android.widget.Toast;
 import java.io.File;
 import java.util.Arrays;
 
-import de.syss.MifareClassicTool.Common;
-import de.syss.MifareClassicTool.R;
+import net.zjy.zxcardumper.Common;
+import net.zjy.zxcardumper.R;
 
 /**
  * A simple generic file chooser that lets the user choose a file from

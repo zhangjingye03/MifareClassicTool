@@ -16,11 +16,11 @@
  */
 
 
-package de.syss.MifareClassicTool.Activities;
+package net.zjy.zxcardumper.Activities;
 
 import android.os.Bundle;
 import android.webkit.WebView;
-import de.syss.MifareClassicTool.R;
+import net.zjy.zxcardumper.R;
 
 /**
  * In-App (offline) help and info.

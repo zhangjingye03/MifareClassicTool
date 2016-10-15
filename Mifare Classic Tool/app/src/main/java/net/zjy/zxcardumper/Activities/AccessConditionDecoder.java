@@ -16,7 +16,7 @@
  */
 
 
-package de.syss.MifareClassicTool.Activities;
+package net.zjy.zxcardumper.Activities;
 
 import android.os.Bundle;
 import android.text.SpannableString;
@@ -26,9 +26,9 @@ import android.widget.TableLayout.LayoutParams;
 import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.TextView.BufferType;
-import de.syss.MifareClassicTool.Common;
-import de.syss.MifareClassicTool.Common.Operations;
-import de.syss.MifareClassicTool.R;
+import net.zjy.zxcardumper.Common;
+import net.zjy.zxcardumper.Common.Operations;
+import net.zjy.zxcardumper.R;
 
 /**
  * Display the MIFARE Access Conditions in a way a user can read.
