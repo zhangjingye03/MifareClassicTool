@@ -1,14 +1,12 @@
-Incompatible Devices
+不支持的安卓设备
 ====================
 
-This is a list of Android devices which are incomplatible to MIFARE Classic Tool.
-This app **will not work** on the following devices because their hardware
-(NFC-controller) does not support MIFARE Classic
-([read more](https://github.com/ikarus23/MifareClassicTool/issues/1)).
+本app**将不能**在以下设备上工作，因为它们的NFC控制器太新不支持`MIFARE Classic`的读取，而执信中学饭卡是基于`MIFARE Classic 1k`RFID卡修改而来的。
+([详细信息](https://github.com/ikarus23/MifareClassicTool/issues/1)).
 
 
-This list may be incomplete. You might also want to have a look at
-[this list](http://www.shopnfc.it/en/content/7-nfc-device-compatibility).
+这个列表尚不完全。你可以在
+[这里](http://www.shopnfc.it/en/content/7-nfc-device-compatibility) 查看更完整的列表。
 
 * Asus Zenfone 2
 * Foxcon InFocus M320
@@ -57,7 +55,7 @@ This list may be incomplete. You might also want to have a look at
 * ZTE Nubia Z7 Max(NX505J)
 
 
-This app **has been known to work** on the following devices.
+这个app在以下设备上已经过测试，**可以运行**。
 
 * Google Nexus 7 (2012)
 * HTC One
