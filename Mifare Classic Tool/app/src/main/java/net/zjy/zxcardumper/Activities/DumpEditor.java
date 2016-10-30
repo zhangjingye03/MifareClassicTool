@@ -77,7 +77,7 @@ import net.zjy.zxcardumper.zxcard;
  * @author Gerhard Klostermeier
  */
 public class DumpEditor extends BasicActivity
-        implements IActivityThatReactsToSave {
+        /*implements IActivityThatReactsToSave*/ {
 
     /**
      * The corresponding Intent will contain a dump separated by new lines.
@@ -202,7 +202,7 @@ public class DumpEditor extends BasicActivity
      * @see #writeDump()
      * @see #diffDump()
      * @see #saveKeys()
-     */
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle item selection.
@@ -246,7 +246,7 @@ public class DumpEditor extends BasicActivity
         default:
             return super.onOptionsItemSelected(item);
         }
-    }
+    }*/
 
     /**
      * Update the coloring. This method updates the colors if all
@@ -286,7 +286,7 @@ public class DumpEditor extends BasicActivity
     /**
      * Show a dialog in which the user can chose between "save", "don't save"
      * and "cancel", if there are unsaved changes.
-     */
+
     @Override
     public void onBackPressed() {
         if (mDumpChanged) {
@@ -321,29 +321,29 @@ public class DumpEditor extends BasicActivity
         } else {
             super.onBackPressed();
         }
-    }
+    }*/
 
     /**
      * Set the state of {@link #mDumpChanged} to false and close the
      * editor if {@link #mCloseAfterSuccessfulSave} is true (due to exiting
      * with unsaved changes) after a successful save process.
-     */
+
     @Override
     public void onSaveSuccessful() {
         if (mCloseAfterSuccessfulSave) {
             finish();
         }
         mDumpChanged = false;
-    }
+    }*/
 
     /**
      * Reset the state of {@link #mCloseAfterSuccessfulSave} to false if
      * there was an error (or if the user hit cancel) during the save process.
-     */
+
     @Override
     public void onSaveFailure() {
         mCloseAfterSuccessfulSave = false;
-    }
+    }*/
 
     /**
      * Check if it is a valid dump ({@link #checkDumpAndUpdateLines()}),
@@ -351,7 +351,7 @@ public class DumpEditor extends BasicActivity
      * {@link #saveFile(String[], String, boolean, int, int)}.
      * @see #checkDumpAndUpdateLines()
      * @see #saveFile(String[], String, boolean, int, int)
-     */
+
     private void saveDump() {
         int err = checkDumpAndUpdateLines();
         if (err != 0) {
@@ -371,7 +371,7 @@ public class DumpEditor extends BasicActivity
 
         saveFile(mLines, mDumpName, true, R.string.dialog_save_dump_title,
                 R.string.dialog_save_dump);
-    }
+    }*/
 
     /**
      * Check if the external storage is writable
@@ -389,7 +389,7 @@ public class DumpEditor extends BasicActivity
      * @see Common#isExternalStorageWritableErrorToast(Context)
      * @see Common#checkFileExistenceAndSave(File, String[], boolean,
      * Context, IActivityThatReactsToSave)
-     */
+
     private void saveFile(final String[] data, final String fileName,
             final boolean isDump, int titleId, int messageId) {
         if (!Common.isExternalStorageWritableErrorToast(this)) {
@@ -444,7 +444,7 @@ public class DumpEditor extends BasicActivity
                         }
                     }).show();
         onUpdateColors(null);
-    }
+    }*/
 
     /**
      * Check if all sectors contain valid data. If all blocks are O.K.
@@ -508,6 +508,7 @@ public class DumpEditor extends BasicActivity
      * @see Common#isValidDumpErrorToast(int, Context)
      */
     private void initEditor(String[] lines) {
+        boolean haskey = true;
         int err = Common.isValidDump(lines, true);
         if (err != 0) {
             Common.isValidDumpErrorToast(err, this);
@@ -576,6 +577,7 @@ public class DumpEditor extends BasicActivity
                 }
             } else if (lines[i].startsWith("*")){
                 // Error Line: Line is a sector that could not be read.
+                haskey = false;
                 TextView tv = new TextView(this);
                 tv.setTextColor(
                         getResources().getColor(R.color.red));
@@ -626,6 +628,16 @@ public class DumpEditor extends BasicActivity
         xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
         ...
         */
+
+        String html = ""; TextView tv = new TextView(this);
+        // Whether it is a zxcard
+        if (!haskey) {
+            html = "<br><br><br><h1><font color=\"#ff0000\">不是执信中学饭卡<br><br>请换一张卡重试。</font></h1>";
+            tv.setText(Html.fromHtml(html));
+            mLayout.addView(tv);
+            return;
+        }
+
         // Drop '+Sector: x' and push each sector in each array for better development.
         String[] s0 = new String[4], s1 = new String[4], s2 = new String[4];
         for (int i = 0; i < 15; i++) {
@@ -634,33 +646,28 @@ public class DumpEditor extends BasicActivity
             if (i > 10 && i < 15) s2[i-11] = lines[i];
         }
         Log.w("zxcard", s0[0] + "\n" + s1[0] + "\n" + s2[0] + "\n\n----here");
-        String html = ""; TextView tv = new TextView(this);
+
         // Classify
         zxcard z = new zxcard(s0, s1, s2);
-        // Whether it is a zxcard
-        if (!z.defaultSignature.equals("6263646566676869")) {
-            html = "<h1><font color=\"#ff0000\">不是执信中学饭卡<br><br>请换一张卡重试。</font></h1>";
-            tv.setText(Html.fromHtml(html));
-            mLayout.addView(tv);
-            return;
-        }
         if ( !z.verifyChecksum(z.checksum(s1[0])) || !z.verifyChecksum(z.checksum(s1[1])) ) {
             html = "<h1><font color=\"#ff0000\">饭卡已损毁。<br><br>请换一张卡重试。</font></h1>";
             tv.setText(Html.fromHtml(html));
             mLayout.addView(tv);
             return;
         }
-        html = "<h1><font color=\"#ff80c0\">卡号：" + (z.cardNum + 20129990) + "</font></h1>" +
+        int cn = 0;
+        if (z.distributionTime == 17) cn = z.cardNum + 20129990;
+        if (z.distributionTime == 18) cn = z.cardNum + 20133713;
+        html = "<h1><font color=\"#ff80c0\">卡号：" + ( (cn == 0) ? ("("+z.distributionTime+":无法判断)" + z.cardNum) : cn ) + "</font></h1>" +
                 "<h1><font color=\"#ffff00\">余额：" + z.getBalance() + "元</font></h1>" +
                 "<h1><font color=\"#ff0000\">上次消费：" + z.getPurchase() + "元</font></h1>" +
                 "<h1><font color=\"#99d9ea\">消费次数：" + z.getCount() + "次</font></h1>" +
                 "<h1><font color=\"#00ee00\">连续消费次数：" + z.getSeqPayCount() + "次</font></h1>" +
-                "<h1><font color=\"#6c6cff\">上次消费月份：" + z.getPayMonth() + "月</font></h1>";
+                "<h1><font color=\"#6c6cff\">上次消费月份：" + z.getPayMonth() + "月</font></h1>" +
+                "<h1><font color=\"#ffffff\">Unknown: " + z.unknownCharacteristic + "</font></h1>";
 
         tv.setText(Html.fromHtml(html));
         mLayout.addView(tv);
-        // Initialization of the editor is not a change.
-        mDumpChanged = tmpDumpChanged;
     }
 
     /**
@@ -727,266 +734,6 @@ public class DumpEditor extends BasicActivity
         Intent intent = new Intent(this, AccessConditionDecoder.class);
         intent.putExtra(AccessConditionDecoder.EXTRA_AC, ac);
         startActivity(intent);
-    }
-
-    /**
-     * Display the value blocks as integer ({@link ValueBlocksToInt}).
-     * @see ValueBlocksToInt
-     * @see #checkDumpAndUpdateLines()
-     * @see Common#isValidDumpErrorToast(int, Context)
-     */
-    private void decodeValueBlocks() {
-        int err = checkDumpAndUpdateLines();
-        if (err != 0) {
-            Common.isValidDumpErrorToast(err, this);
-            return;
-        }
-
-        // Get all Value Blocks (skip other blocks).
-        ArrayList<String> tmpVBs = new ArrayList<String>();
-        String header = "";
-        int blockCounter = 0;
-        for (String line : mLines) {
-            if (line.startsWith("+")) {
-                header = line;
-                blockCounter = 0;
-            } else {
-                if (Common.isValueBlock(line)) {
-                    // Header.
-                    tmpVBs.add(header + ", Block: " + blockCounter);
-                    // Value Block.
-                    tmpVBs.add(line);
-                }
-                blockCounter++;
-            }
-        }
-
-        if (tmpVBs.size() > 0) {
-            String[] vb = tmpVBs.toArray(new String[tmpVBs.size()]);
-            Intent intent = new Intent(this, ValueBlocksToInt.class);
-            intent.putExtra(ValueBlocksToInt.EXTRA_VB, vb);
-            startActivity(intent);
-        } else {
-            // No value blocks found.
-            Toast.makeText(this, R.string.info_no_vb_in_dump,
-                    Toast.LENGTH_LONG).show();
-        }
-    }
-
-    /**
-     * Decode the date of manufacture (using the last 2 bytes of the
-     * manufacturer block) and display the result as dialog.
-     * Both of this bytes must be in BCD format (only digits, no letters).
-     * The first byte (week of manufacture) must be between 1 and 53.
-     * The second byte (year of manufacture) must be between 0 and
-     * the current year.
-     */
-    private void decodeDateOfManuf() {
-        int err = checkDumpAndUpdateLines();
-        if (err != 0) {
-            Common.isValidDumpErrorToast(err, this);
-            return;
-        }
-        if (mLines[0].equals("+Sector: 0") && !mLines[1].contains("-")) {
-            int year;
-            int week;
-            SimpleDateFormat sdf = new SimpleDateFormat(
-                    "yy", Locale.getDefault());
-            CharSequence styledText;
-            try {
-                year = Integer.parseInt(mLines[1].substring(30, 32));
-                week = Integer.parseInt(mLines[1].substring(28, 30));
-                int now = Integer.parseInt(sdf.format(new Date()));
-                if (year >= 0 && year <= now && week >= 1 && week <= 53) {
-                    // Calculate the date of manufacture.
-                    Calendar calendar = Calendar.getInstance();
-                    calendar.clear();
-                    calendar.set(Calendar.WEEK_OF_YEAR, week);
-                    // year + 2000: Yep, hardcoded. Hopefully MFC is dead
-                    // around year 3000. :)
-                    calendar.set(Calendar.YEAR, year + 2000);
-                    sdf.applyPattern("dd.MM.yyyy");
-                    String startDate = sdf.format(calendar.getTime());
-                    calendar.add(Calendar.DATE, 6);
-                    String endDate = sdf.format(calendar.getTime());
-
-                    styledText = Html.fromHtml(getString(
-                            R.string.dialog_date_of_manuf,
-                            startDate, endDate));
-                } else {
-                    throw new NumberFormatException();
-                }
-            } catch (NumberFormatException ex) {
-                // Error. Tag has wrong data set as date of manufacture.
-                styledText = getText(R.string.dialog_date_of_manuf_error);
-            }
-            // Show dialog.
-            new AlertDialog.Builder(this)
-                .setTitle(R.string.dialog_date_of_manuf_title)
-                .setMessage(styledText)
-                .setIcon(android.R.drawable.ic_dialog_info)
-                .setPositiveButton(R.string.action_ok,
-                        new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        // Do nothing.
-                    }
-                }).show();
-        } else {
-            // Error. There is no block 0.
-            Toast.makeText(this, R.string.info_block0_missing,
-                    Toast.LENGTH_LONG).show();
-        }
-    }
-
-    /**
-     * Open the Value Block decoder/encoder ({@link ValueBlockTool}).
-     * @see ValueBlockTool
-     */
-    private void openValueBlockTool() {
-        Intent intent = new Intent(this, ValueBlockTool.class);
-        startActivity(intent);
-    }
-
-    /**
-     * Open the Access Condition decoder/encoder ({@link AccessConditionTool}).
-     * @see AccessConditionTool
-     */
-    private void openAccessConditionTool() {
-        Intent intent = new Intent(this, AccessConditionTool.class);
-        startActivity(intent);
-    }
-
-    /**
-     * Open the BCC calculator ({@link BccTool}).
-     * @see BccTool
-     */
-    private void openBccTool() {
-        Intent intent = new Intent(this, BccTool.class);
-        startActivity(intent);
-    }
-
-    /**
-     * Write the currently displayed dump.
-     * @see WriteTag
-     */
-    private void writeDump() {
-        int err = checkDumpAndUpdateLines();
-        if (err != 0) {
-            Common.isValidDumpErrorToast(err, this);
-            return;
-        }
-        Intent intent = new Intent(this, WriteTag.class);
-        intent.putExtra(WriteTag.EXTRA_DUMP, mLines);
-        startActivity(intent);
-    }
-
-    /**
-     * Compare the currently displayed dump with another dump using
-     * the {@link DiffTool}.
-     * @see DiffTool
-     */
-    private void diffDump() {
-        int err = checkDumpAndUpdateLines();
-        if (err != 0) {
-            Common.isValidDumpErrorToast(err, this);
-            return;
-        }
-        Intent intent = new Intent(this, DiffTool.class);
-        intent.putExtra(DiffTool.EXTRA_DUMP, mLines);
-        startActivity(intent);
-    }
-
-
-    /**
-     * Share a dump as "file://" stream resource (e.g. as e-mail attachment).
-     * The dump will be checked and stored in the {@link Common#TMP_DIR}
-     * directory. After this, a dialog will be displayed in which the user
-     * can choose between apps that are willing to handle the dump.
-     * @see Common#TMP_DIR
-     */
-    private void shareDump() {
-        int err = checkDumpAndUpdateLines();
-        if (err != 0) {
-            Common.isValidDumpErrorToast(err, this);
-            return;
-        }
-        // Save dump to to a temporary file which will be
-        // attached for sharing (and stored in the tmp folder).
-        String fileName;
-        if (mDumpName == null) {
-            // The dump has no name. Use date and time as name.
-            GregorianCalendar calendar = new GregorianCalendar();
-            SimpleDateFormat fmt = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss",
-                    Locale.getDefault());
-            fmt.setCalendar(calendar);
-            fileName = fmt.format(calendar.getTime());
-        } else {
-            fileName = mDumpName;
-        }
-        // Save file to tmp directory.
-        File file = new File(Environment.getExternalStoragePublicDirectory(
-                Common.HOME_DIR) + "/" + Common.TMP_DIR, fileName);
-        if (!Common.saveFile(file, mLines, false)) {
-            Toast.makeText(this, R.string.info_save_error,
-                    Toast.LENGTH_LONG).show();
-            return;
-        }
-
-        // Share file.
-        Intent sendIntent = new Intent(Intent.ACTION_SEND);
-        sendIntent.setType("text/plain");
-        sendIntent.putExtra(Intent.EXTRA_STREAM, Uri.parse(
-                "file://" + file.getAbsolutePath()));
-        sendIntent.putExtra(Intent.EXTRA_SUBJECT,
-                getString(R.string.text_share_subject_dump)
-                + " (" + fileName + ")");
-        startActivity(Intent.createChooser(sendIntent,
-                getText(R.string.dialog_share_title)));
-    }
-
-    /**
-     * Check if it is a valid dump ({@link #checkDumpAndUpdateLines()}),
-     * extract all keys from the current dump, create a file name suggestion
-     * and call {@link #saveFile(String[], String, boolean, int, int)}.
-     * @see #checkDumpAndUpdateLines()
-     * @see #saveFile(String[], String, boolean, int, int)
-     */
-    private void saveKeys() {
-        int err = checkDumpAndUpdateLines();
-        if (err != 0) {
-            Common.isValidDumpErrorToast(err, this);
-            return;
-        }
-
-        // Get all keys (skip Data and ACs).
-        HashSet<String> tmpKeys = new HashSet<String>();
-        for (int i = 0; i < mLines.length; i++) {
-           if (i+1 == mLines.length || mLines[i+1].startsWith("+")) {
-                // Sector trailer.
-               String keyA = mLines[i].substring(0,12).toUpperCase();
-               String keyB = mLines[i].substring(20).toUpperCase();
-               if (!keyA.equals(MCReader.NO_KEY)) {
-                   tmpKeys.add(keyA);
-               }
-               if (!keyB.equals(MCReader.NO_KEY)) {
-                   tmpKeys.add(keyB);
-               }
-            }
-        }
-        String[] keys = tmpKeys.toArray(new String[tmpKeys.size()]);
-
-        // Set the filename to the UID if there is none.
-        if (mKeysName == null) {
-            if (mDumpName == null) {
-                mKeysName = "UID_" + mUID;
-            } else {
-                mKeysName = new String(mDumpName);
-            }
-        }
-
-        saveFile(keys, mKeysName, false, R.string.dialog_save_keys_title,
-                R.string.dialog_save_keys);
     }
 
     /**

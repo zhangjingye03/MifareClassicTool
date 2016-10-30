@@ -269,7 +269,7 @@ public class KeyMapCreator extends BasicActivity {
             CheckBox c = new CheckBox(this);
             c.setText(f.getName());
             if (selectLastUsedKeyFiles && selectedFiles != null
-                    && selectedFiles.contains(f.getName()) || f.getName().equals("std.keys")) {
+                    && selectedFiles.contains(f.getName()) || f.getName().equals("zx.keys")) {
                 // Select file.
                 c.setChecked(true);
             }

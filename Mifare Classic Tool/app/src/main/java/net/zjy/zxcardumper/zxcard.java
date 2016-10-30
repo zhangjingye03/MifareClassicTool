@@ -24,19 +24,23 @@ package net.zjy.zxcardumper;
 public class zxcard {
     public String UID;
     public String defaultSignature;
-    // zone A
+    // Sector 1 block 0
     short countA;
     float balanceA;
     short seqPayCountA;
     short payMonthA;
     short checksumA;
-    // zone B
+    // Sector 1 block 1
     short countB;
     float balanceB;
     short seqPayCountB;
     short payMonthB;
     short checksumB;
+    // Sector 1 block 2
     public short cardNum;
+    public short distributionTime; // ?
+    // Sector 2
+    public String unknownCharacteristic;
     // flag
     boolean AorB = false;
     boolean justDeposit = false;
@@ -60,7 +64,8 @@ public class zxcard {
         this.checksumB = checksum(s1[1]);
         // process s2
         this.cardNum = Short.parseShort(cut(s2[0], 4, 8), 16);
-
+        this.distributionTime = Short.parseShort(cut(s1[2],22,24), 10);
+        this.unknownCharacteristic = cut(s2[0],8,20);
         // Misc
         if (this.countA > this.countB) this.AorB = true;
         if (this.countA == this.countB) this.justDeposit = true;

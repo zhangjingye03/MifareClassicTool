@@ -791,22 +791,22 @@ public class MainMenu extends Activity {
         AssetManager assetManager = getAssets();
 
         if (!std.exists()) {
-            // Copy std.keys.
+            // Copy zx.keys.
             try {
-                InputStream in = assetManager.open(
-                        Common.KEYS_DIR + "/" + Common.STD_KEYS);
+                InputStream in = assetManager.open("key-files/zx.keys");
                 OutputStream out = new FileOutputStream(std);
                 Common.copyFile(in, out);
                 in.close();
                 out.flush();
                 out.close();
               } catch(IOException e) {
-                  Log.e(LOG_TAG, "Error while copying 'std.keys' from assets "
+                  Log.e(LOG_TAG, "Error while copying 'zx.keys' from assets "
                           + "to external storage.");
+                e.printStackTrace();
               }
         }
         /*if (!extended.exists()) {
-            // Copy extended-std.keys.
+            // Copy extended-zx.keys.
             try {
                 InputStream in = assetManager.open(
                         Common.KEYS_DIR + "/" + Common.STD_KEYS_EXTENDED);
@@ -816,7 +816,7 @@ public class MainMenu extends Activity {
                 out.flush();
                 out.close();
               } catch(IOException e) {
-                  Log.e(LOG_TAG, "Error while copying 'extended-std.keys' "
+                  Log.e(LOG_TAG, "Error while copying 'extended-zx.keys' "
                           + "from assets to external storage.");
               }
         }*/

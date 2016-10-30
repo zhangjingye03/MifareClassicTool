@@ -101,18 +101,17 @@ public class Common extends Application {
      * <li>0xFFFFFFFFFFFF - Un-formatted, factory fresh tags.</li>
      * <li>0xA0A1A2A3A4A5 - First sector of the tag (MIFARE MAD).</li>
      * <li>0xD3F7D3F7D3F7 - NDEF formatted tags.</li>
-     * <li>0x003003003003 - ZXCARD KeyA</li>
      * <li>0x668770666644 - ZXCARD KeyB</li>
      * </ul>
      */
-    public static final String STD_KEYS = "std.keys";
+    public static final String STD_KEYS = "zx.keys";
 
     /**
      * Keys taken from SLURP by Anders Sundman anders@4zm.org
      * (and a short google search).
      * https://github.com/4ZM/slurp/blob/master/res/xml/mifare_default_keys.xml
      */
-    //public static final String STD_KEYS_EXTENDED = "extended-std.keys";
+    //public static final String STD_KEYS_EXTENDED = "extended-zx.keys";
 
     /**
      * Possible operations the on a MIFARE Classic Tag.

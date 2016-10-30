@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">执信饭卡</string>
+    <string name="app_name">执信饭卡读取工具</string>
     <string name="action_append">附加</string>
     <string name="ac_data_block_no_keyb_1"></string>
     <string name="action_auto_reconnect">高级: 在密钥映射时卡片丢失自动重连</string>
@@ -34,7 +34,7 @@
     <string name="action_factory_format">工厂格式化</string>
     <string name="action_help">帮助和信息</string>
     <string name="action_i_know_what_i_am_doing">我知道我在做什么</string>
-    <string name="action_more">读更多…</string>
+    <string name="action_more">更多信息</string>
     <string name="action_nfc">转到NFC设置</string>
     <string name="action_ok">好的</string>
     <string name="action_open_dump_file">打开转储文件</string>
@@ -55,7 +55,7 @@
     <string name="action_show_diff_tool">差异工具(比较转储文件)</string>
     <string name="action_show_options">显示选项</string>
     <string name="action_show_preferences">首选项</string>
-    <string name="action_show_tag_info">显示饭卡信息</string>
+    <string name="action_show_tag_info">显示卡信息</string>
     <string name="action_show_value_blocks_as_int">值块是整数</string>
     <string name="action_show_vb_tool">值块编/解码</string>
     <string name="action_skip_blocks">尽可能多写</string>
@@ -70,7 +70,7 @@
     <string name="action_write_tag">写饭卡</string>
     <string name="action_write_value_block">写值块</string>
     <string name="app_version">版本</string><string name="dialog_about_mct"><![CDATA[
-        <h1>执信中学饭卡读取工具</h1><br /><br />
+        <h1>执信饭卡读取工具</h1><br /><br />
         <b>Based on MifareClassicTool (MCT)<br /><br />
         &#8226; 版本: %1$s<br />
         &#8226; 许可证:
@@ -103,7 +103,9 @@
     <string name="dialog_choose_ac_title">选定访问条件</string>
     <string name="dialog_date_of_manuf_title">制造日期</string>
     <string name="dialog_donate_title">捐赠</string>
-    <string name="dialog_first_run_title">警告通知</string>
+    <string name="dialog_first_run_title">免责声明</string>
+    <string name="dialog_first_run">本人不对不当使用本APP导致的任何现象（包括但不限于饭卡损坏等）负责。\n本APP不会对饭堂的收银系统造成任何影响。\n如果您使用本软件的密钥对饭卡进行修改操作，后果自负。
+        \n\n<b>更多信息请查看“帮助和信息”。</b></string>
     <string name="dialog_mapping_range">选定密钥映射的扇区范围\n(首扇区从0起):</string><string name="dialog_donate">        <b> 执信中学饭卡读取工具已更新！</b>\n\n
         如果这个程序对你有用,
         请考虑捐助开发者！ ;)</string>
@@ -112,8 +114,16 @@
     <string name="dialog_new_file_title">新文件</string>
     <string name="dialog_nfc_not_enabled">NFC功能没有打开。请到设置中启用。</string>
     <string name="dialog_nfc_not_enabled_title">NFC功能没有打开</string>
-    <string name="dialog_no_mfc_support_device_title">没MIFARE Classic支持</string>
-    <string name="dialog_no_mfc_support_tag_title">没有MIFARE Classic饭卡</string>
+    <string name="dialog_no_mfc_support_device_title">不支持MIFARE Classic</string>
+    <string name="dialog_no_mfc_support_tag_title">这不是一张MIFARE Classic卡</string>
+    <string name="dialog_no_mfc_support_tag">
+        <![CDATA[
+        执信饭卡使用MIFARE Classic 1k卡。<br>
+        你手上一定是一张新版羊城通/地铁单程票/广深火车票/身份证/.....
+        <br /><br /><b>请换一张卡重试。</b>
+        <br /><br /><small>(提示：如果你的人品足够衰，这条消息可能是误报~)</small>
+        ]]>
+        </string>
     <string name="dialog_no_nfc">你的手机不支持NFC硬件。你需要一个支持NFC功能的手机才能正确运行这个程序。</string>
     <string name="dialog_no_nfc_title">没有NFC硬件</string>
     <string name="dialog_not_writable">有些部分是不可写的！检查下面列表。</string>
@@ -210,7 +220,7 @@
     <string name="text_incr_decr_value_block">增/减 值块</string>
     <string name="text_incr_decr_value_block_info">增值或减值并传输值块（如果你不知道什么是值块,查看\"帮助和信息\".）</string>
     <string name="text_increment">增值</string>
-    <string name="text_invalid_ac_or_sector_dead">无效的访问条件或死扇区:(</string>
+    <string name="text_invalid_ac_or_sector_dead">无效的访问条件或坏扇区</string>
     <string name="text_key_map_progress">密钥映射中:</string>
     <string name="text_keys_not_known">Keys (A and B) 未知</string>
     <string name="text_keys_read_only">Keys (A and B) 只读</string>
@@ -218,10 +228,10 @@
     <string name="text_mf_info">MIFARE Classic 信息</string>
     <string name="text_never">永不</string>
     <string name="text_no_files_in_chooser">没发现文件</string>
-    <string name="text_no_key_io_error">没密钥发现(或死扇区)</string>
+    <string name="text_no_key_io_error">无法读取该扇区。</string>
     <string name="text_no_mfc_support_device">此设备不支持MIFARE Classic！</string>
-    <string name="text_no_mfc_support_tag">不是执信中学饭卡！</string>
-    <string name="text_no_tag">这不是执信中学饭卡！</string>
+    <string name="text_no_mfc_support_tag">不是执信饭卡！</string>
+    <string name="text_no_tag">这不是执信饭卡！</string>
     <string name="text_open_dump_title">打开饭卡转储</string>
     <string name="text_open_key_file_title">打开或创建一个密钥文件</string>
     <string name="text_option_info">信息选项</string>
@@ -237,12 +247,12 @@
     <string name="text_vb_orig">原始:</string>
     <string name="text_vb_value">值:</string>
     <string name="title_activity_read_tag">读饭卡</string>
-    <string name="title_activity_tag_info">饭卡信息</string>
+    <string name="title_activity_tag_info">卡信息</string>
     <string name="title_activity_value_block_tool"><![CDATA[值块解码&编码]]></string>
     <string name="title_activity_value_blocks">值块是整数</string>
     <string name="title_activity_write_tag">写饭卡</string>
     <string name="title_activity_key_editor">密钥编辑</string>
-    <string name="title_activity_main">执信中学饭卡读取工具</string>
+    <string name="title_activity_main">执信饭卡读取工具</string>
     <string name="title_activity_hex_to_ascii">数据是ASCII</string>
     <string name="title_activity_help">帮助和信息</string>
     <string name="title_activity_file_chooser">文件选择器</string>
@@ -257,7 +267,7 @@
     <string name="text_update_colors">更新配色</string>
     <string name="text_uid_and_manuf"><![CDATA[UID & 厂家信息]]></string>
     <string name="text_to">到</string>
-    <string name="text_tag_type_and_manuf">饭卡类型和厂商</string>
+    <string name="text_tag_type_and_manuf">卡类型和制造厂商</string>
     <string name="text_strange_error">发生了一些奇怪的错误:(</string>
     <string name="text_step_2_data_blocks">步骤2: 选定数据块访问条件</string>
     <string name="text_step_1_sector_trailer">步骤1: 选定扇区尾部访问条件</string>
@@ -282,7 +292,7 @@
     <string name="text_write_key_a_not_known">写访问密钥(A)未知</string>
     <string name="text_write_key_b_not_known">写访问密钥(B)未知</string><string name="info_strange_error">错误：一个奇怪的错误…并且我不知道为什么 :(\n
 请使用项目页面报告</string>
-    <string name="text_tag_type_guess">\"饭卡类型和制造商\" 可能是错的.\n查看 \"帮助和信息\" 获取更多信息.</string><string name="dialog_date_of_manuf"><![CDATA[
+    <string name="text_tag_type_guess">\"卡类型和制造商\" 可能有误.\n查看 \"帮助和信息\" 获取更多信息.</string><string name="dialog_date_of_manuf"><![CDATA[
         饭卡是这期间生产 <b>%1$s</b> 和 <b>%2$s</b>
         <br /><br />
         (这些信息可能是错误的. 查看 \"帮助和信息\" 获取更多信息.)
