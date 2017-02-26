@@ -664,7 +664,7 @@ public class DumpEditor extends BasicActivity
                 "<h1><font color=\"#99d9ea\">消费次数：" + z.getCount() + "次</font></h1>" +
                 "<h1><font color=\"#00ee00\">连续消费次数：" + z.getSeqPayCount() + "次</font></h1>" +
                 "<h1><font color=\"#6c6cff\">上次消费月份：" + z.getPayMonth() + "月</font></h1>" +
-                "<h1><font color=\"#ffffff\">Unknown: " + z.unknownCharacteristic + "</font></h1>";
+                "<h1><font color=\"#ffffff\">持卡人姓名： " + z.getCardOwnerName() + "</font></h1>";
 
         tv.setText(Html.fromHtml(html));
         mLayout.addView(tv);

@@ -17,6 +17,9 @@
 
 package net.zjy.zxcardumper;
 
+import java.nio.charset.Charset;
+
+import android.util.Log;
 /**
  * Created by ZJY on 10/15/2016.
  */
@@ -40,7 +43,7 @@ public class zxcard {
     public short cardNum;
     public short distributionTime; // ?
     // Sector 2
-    public String unknownCharacteristic;
+    public String cardOwnerName;
     // flag
     boolean AorB = false;
     boolean justDeposit = false;
@@ -65,7 +68,7 @@ public class zxcard {
         // process s2
         this.cardNum = Short.parseShort(cut(s2[0], 4, 8), 16);
         this.distributionTime = Short.parseShort(cut(s1[2],22,24), 10);
-        this.unknownCharacteristic = cut(s2[0],8,20);
+        this.cardOwnerName = cut(s2[0],8,32);
         // Misc
         if (this.countA > this.countB) this.AorB = true;
         if (this.countA == this.countB) this.justDeposit = true;
@@ -91,6 +94,15 @@ public class zxcard {
         return (AorB) ? payMonthA : payMonthB;
     }
 
+    public String getCardOwnerName() {
+        String iout = convertHexToString(this.cardOwnerName);
+        Log.w("zxcard", iout);
+        // plain hex recognized as gbk
+        String gout = new String(iout.getBytes(Charset.forName("ISO-8859-1")), Charset.forName("gbk"));
+        Log.w("zxcard", gout);
+        return gout;
+    }
+
     public boolean verifyChecksum(short sum) {
         int all = 0;
         for (int i = 0; i < 0x7f; i++) {
@@ -112,6 +124,40 @@ public class zxcard {
             sum += tmpi;
         }
         return sum;
+    }
+    public String convertStringToHex(String str){
+
+        char[] chars = str.toCharArray();
+
+        StringBuffer hex = new StringBuffer();
+        for(int i = 0; i < chars.length; i++){
+            hex.append(Integer.toHexString((int)chars[i]));
+        }
+
+        return hex.toString();
+    }
+
+    public String convertHexToString(String hex){
+
+        StringBuilder sb = new StringBuilder();
+        StringBuilder temp = new StringBuilder();
+
+        for( int i=0; i<hex.length()-1; i+=2 ){
+
+            //grab the hex in pairs
+            String output = hex.substring(i, (i + 2));
+            //convert hex to decimal
+            int decimal = Integer.parseInt(output, 16);
+            //if 0 then drop it in case it becomes an strange char
+            if (decimal == 0) continue;
+            //convert the decimal to character
+            sb.append((char)decimal);
+
+            temp.append(decimal);
+        }
+        //System.out.println("Decimal : " + temp.toString());
+
+        return sb.toString();
     }
 
 }
